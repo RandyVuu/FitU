@@ -1,16 +1,13 @@
 package com.umn.appdev.fitu;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+public class AddFoodActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Intent intent = new Intent(this, FoodListActivity.class);
-        startActivity(intent);
+        setContentView(R.layout.activity_add_food);
     }
 }
