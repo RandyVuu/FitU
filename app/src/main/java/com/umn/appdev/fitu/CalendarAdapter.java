@@ -41,6 +41,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.Number
     }
     @Override
     public void onBindViewHolder(NumberViewHolder holder, int position){
+        holder.setIsRecyclable(false);
         Log.d(TAG, "#" + position);
         holder.bind(position);
 
@@ -72,7 +73,7 @@ class NumberViewHolder extends RecyclerView.ViewHolder
             calendar.add(Calendar.DATE, listIndex);
             currentDate = DateFormat.getDateInstance().format(calendar.getTime());
         }
-        listItemNumberView.setText(currentDate);
+        listItemNumberView.setText(String.valueOf(listIndex)+"| "+ currentDate);
     }
     @Override
     public void onClick(View v){
