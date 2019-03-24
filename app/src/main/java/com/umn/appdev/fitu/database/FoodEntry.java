@@ -1,5 +1,7 @@
 package com.umn.appdev.fitu.database;
 
+import java.util.Date;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -21,8 +23,11 @@ public class FoodEntry {
     private double carbs;
     @ColumnInfo(name = "calories")
     private double calories;
+    @ColumnInfo(name = "date")
+    private Date date;
+
     public FoodEntry(int id, String name, double carbs, double fats, double protein, double calories,
-                     int priority) {
+                     int priority, Date date) {
         this.id = id;
         this.priority = priority;
         this.name = name;
@@ -30,15 +35,17 @@ public class FoodEntry {
         this.fats = fats;
         this.protein = protein;
         this.calories = calories;
+        this.date = date;
     }
     @Ignore
-    public FoodEntry(String name, double carbs, double fats, double protein, int priority) {
+    public FoodEntry(String name, double carbs, double fats, double protein, int priority, Date date) {
         this.priority = priority;
         this.name = name;
         this.carbs = carbs;
         this.fats = fats;
         this.protein = protein;
         this.calories = (4*carbs) + (9*fats) + (4*protein);
+        this.date = date;
 
     }
     public String getName(){return name;}
