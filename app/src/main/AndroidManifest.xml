@@ -9,6 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".Calendar_Activity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.calendar.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +26,15 @@
         <activity
             android:name=".FoodList"
             android:label="@string/title_activity_food_list"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+         <activity
+            android:name=".DetailActivity"
+            android:parentActivityName=".Calendar_Activity">
+            <meta-data
+                android:name="android.detail.PARENT_ACTIVITY"
+                android:value=".Calendar_Activity" />
+        </activity>
     </application>
 
 </manifest>
