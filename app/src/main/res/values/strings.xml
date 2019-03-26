@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">FitU</string>
+    <string name="title_home">Home</string>
+    <string name="title_calendar">Calendar</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_food">Add Food</string>
+    <string name="selectmeal">Select meal</string>
+    <string name="calories">Enter Calories</string>
+    <string name="fats">Enter Fats </string>
+    <string name="protien">Enter Protien</string>
+    <string name="carbs">Enter Carbs</string>
+    <string name="examnum">(200)</string>
+
+    <string-array name="meals">
+        <item>Breakfast</item>
+        <item>Lunch</item>
+        <item>Dinner</item>
+        <item>Snack</item>
+    </string-array>
+
 </resources>
