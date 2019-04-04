@@ -8,6 +8,7 @@ import android.widget.EditText;
 
 import com.umn.appdev.fitu.database.AppDatabase;
 import com.umn.appdev.fitu.database.FoodEntry;
+import com.umn.appdev.fitu.utils.Utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -39,22 +40,13 @@ public class AddFoodActivity extends AppCompatActivity {
         new LoadIntoDataBase().execute();
         this.finish();
     }
-    private Date getCurrentDate() {
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            return sdf.parse(sdf.format(new Date()));
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return new Date();
-        }
-    }
     class LoadIntoDataBase extends AsyncTask<Void,Void,Void> {
 
         @Override
         protected Void doInBackground(Void... voids) {
             FoodEntry entry = new FoodEntry(name,nutrients[0],nutrients[1],nutrients[2],
-                    ++count,getCurrentDate());
+                    ++count, Utils.getCurrentDate());
             mDataBase.foodDao().insertFood(entry);
             return null;
         }
