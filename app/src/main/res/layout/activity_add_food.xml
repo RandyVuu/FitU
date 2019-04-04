@@ -51,7 +51,8 @@
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/carbs_input" />
+        app:layout_constraintTop_toBottomOf="@+id/carbs_input"
+        android:layout_marginRight="54dp" />
 
     <TextView
         android:id="@+id/textView"
@@ -75,7 +76,9 @@
         android:text="carbs"
         app:layout_constraintEnd_toStartOf="@+id/carbs_input"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="67dp" />
 
     <TextView
         android:id="@+id/textView3"
@@ -87,7 +90,9 @@
         android:text="Fats"
         app:layout_constraintEnd_toStartOf="@+id/fat_input"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        android:layout_marginRight="78dp"
+        android:layout_marginLeft="32dp" />
 
     <TextView
         android:id="@+id/textView5"
@@ -97,7 +102,8 @@
         android:text="Food Name"
         app:layout_constraintBaseline_toBaselineOf="@+id/name_input"
         app:layout_constraintEnd_toStartOf="@+id/name_input"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginRight="2dp" />
 
     <EditText
         android:id="@+id/name_input"
