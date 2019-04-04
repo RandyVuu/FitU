@@ -37,4 +37,7 @@ public class Calendar_Activity extends AppCompatActivity
         Intent intentToStartDetailActivity = new Intent(context, destinationClass);
         startActivity(intentToStartDetailActivity);
     }
+    //TODO have detail link to database
+    //TODO create button that can change/add food plan to calendar day
+    //TODO visual optimizations
 }
