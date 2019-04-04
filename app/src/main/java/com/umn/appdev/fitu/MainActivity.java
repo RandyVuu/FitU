@@ -1,9 +1,9 @@
 package com.umn.appdev.fitu;
 
 import android.content.Context;
-import android.content.Intent;
 
 import android.os.Bundle;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,4 +17,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, FoodListActivity.class);
         startActivity(intent);
     }
+    **/
 }

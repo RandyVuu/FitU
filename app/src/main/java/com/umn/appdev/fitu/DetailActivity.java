@@ -1,8 +1,8 @@
 package com.umn.appdev.fitu;
 
 import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
+
 
 public class DetailActivity extends AppCompatActivity
 {
