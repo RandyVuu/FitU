@@ -2,6 +2,7 @@ package com.umn.appdev.fitu;
 
 import android.content.Context;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 
@@ -13,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
+            startActivity(new Intent(this,FoodListActivity.class));
         }
     /**      }
             public void onClick(View v){

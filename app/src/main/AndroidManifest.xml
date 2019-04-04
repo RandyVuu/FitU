@@ -28,6 +28,9 @@
             android:label="@string/title_activity_food_list"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".AddFoodActivity">
+        </activity>
          <activity
             android:name=".DetailActivity"
             android:parentActivityName=".Calendar_Activity">

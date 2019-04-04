@@ -24,11 +24,14 @@ public class FoodListActivity extends AppCompatActivity implements FoodAdapter.L
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private AppDatabase mDataBase;
+    private FoodEntry clickedFoodEntry;
     private List<FoodEntry> mDataset;
 
     @Override
     public void onListItemClick(int clickedItemIndex) {
-         b-
+         Intent intent = new Intent(this,AddFoodActivity.class);
+         intent.putExtra("foodentry",mDataset.get(clickedItemIndex));
+         startActivity(intent);
     }
 
     class LoadIntoDataBase extends AsyncTask<Void, Void, Void> {
