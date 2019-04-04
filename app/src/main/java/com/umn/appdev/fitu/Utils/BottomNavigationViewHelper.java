@@ -1,17 +1,18 @@
-package com.fitU.fitu.Utils;
+package com.umn.appdev.fitu.utils;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
+
 import android.view.MenuItem;
 
-import com.fitU.fitu.MainActivity;
-import com.fitU.fitu.CalendarActivity;
-import com.fitU.fitu.SettingsActivity;
-import com.fitU.fitu.FoodActivity;
-import com.fitU.fitu.R;
+import com.umn.appdev.fitu.MainActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.umn.appdev.fitu.CalendarActivity;
+import com.umn.appdev.fitu.R;
+import com.umn.appdev.fitu.SettingsActivity;
+import com.umn.appdev.fitu.FoodActivity;
 
+import androidx.annotation.NonNull;
 
 public class BottomNavigationViewHelper {
 

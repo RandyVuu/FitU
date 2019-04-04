@@ -1,14 +1,16 @@
-package com.fitU.fitu;
+package com.umn.appdev.fitu;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
+
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.fitU.fitu.Utils.BottomNavigationViewHelper;
+import com.umn.appdev.fitu.utils.BottomNavigationViewHelper;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SettingsActivity extends AppCompatActivity {
 

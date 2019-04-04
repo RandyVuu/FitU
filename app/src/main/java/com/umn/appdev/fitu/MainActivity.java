@@ -1,17 +1,10 @@
-package com.fitU.fitu;
+package com.umn.appdev.fitu;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
-import android.view.Display;
+
 import android.view.MenuItem;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -21,7 +14,8 @@ import android.widget.Spinner;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.fitU.fitu.Utils.BottomNavigationViewHelper;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.umn.appdev.fitu.utils.BottomNavigationViewHelper;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
@@ -30,7 +24,8 @@ import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
