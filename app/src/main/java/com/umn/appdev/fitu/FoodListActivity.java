@@ -19,12 +19,17 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class FoodListActivity extends AppCompatActivity {
+public class FoodListActivity extends AppCompatActivity implements FoodAdapter.ListemItemClickListener{
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private AppDatabase mDataBase;
     private List<FoodEntry> mDataset;
+
+    @Override
+    public void onListItemClick(int clickedItemIndex) {
+         b-
+    }
 
     class LoadIntoDataBase extends AsyncTask<Void, Void, Void> {
 
@@ -38,7 +43,7 @@ public class FoodListActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            mAdapter = new FoodAdapter(mDataset);
+            mAdapter = new FoodAdapter(mDataset,FoodListActivity.this);
             recyclerView.setAdapter(mAdapter);
         }
     }
