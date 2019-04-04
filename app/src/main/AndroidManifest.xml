@@ -35,6 +35,7 @@
                 android:name="android.detail.PARENT_ACTIVITY"
                 android:value=".Calendar_Activity" />
         </activity>
+
     </application>
 
 </manifest>
