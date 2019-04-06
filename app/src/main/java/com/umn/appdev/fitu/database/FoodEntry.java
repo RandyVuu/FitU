@@ -1,5 +1,6 @@
 package com.umn.appdev.fitu.database;
 
+import java.io.Serializable;
 import java.util.Date;
 
 
@@ -9,7 +10,7 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "food")
-public class FoodEntry {
+public class FoodEntry implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
