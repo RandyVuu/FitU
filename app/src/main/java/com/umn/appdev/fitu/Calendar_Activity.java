@@ -1,14 +1,20 @@
 package com.umn.appdev.fitu;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.umn.appdev.fitu.Utils.BottomNavigationViewHelper;
 
-public class Calendar_Activity extends AppCompatActivity
-        implements CalendarAdapter.ListItemClickListener {
+public class Calendar_Activity extends AppCompatActivity implements CalendarAdapter.ListItemClickListener {
+	
+	private static final String TAG = "CalendarActivity";
+    private static final int ACTIVITY_NUM = 1;
 
     private static final int NUM_LIST_ITEMS = 30;
     private CalendarAdapter mAdapter;
@@ -18,6 +24,7 @@ public class Calendar_Activity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar_);
+		setupBottomNavigationView();
 
         mNumbersList = (RecyclerView) findViewById(R.id.calendar_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
@@ -36,5 +43,14 @@ public class Calendar_Activity extends AppCompatActivity
         Class destinationClass = DetailActivity.class;
         Intent intentToStartDetailActivity = new Intent(context, destinationClass);
         startActivity(intentToStartDetailActivity);
+    }
+	
+	private void setupBottomNavigationView(){
+        Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView");
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationViewHelper.enableNavigation(context, navigation);
+        Menu menu = navigation.getMenu();
+        MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
+        menuItem.setChecked(true);
     }
 }

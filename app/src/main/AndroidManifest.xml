@@ -10,13 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Calendar_Activity"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.calendar.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+            android:name=".Calendar_Activity">
+        <!--android:parentActivityName=".MainActivity">
+        <meta-data
+            android:name="android.calendar.PARENT_ACTIVITY"
+            android:value=".MainActivity"/>-->
         </activity>
-        <activity android:name=".MainActivity">
+         <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,17 +26,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FoodList"
+            android:name= ".AddFoodActivity"
+            android:parentActivityName=".FoodListActivity">
+        </activity>
+        <activity
+            android:name=".FoodListActivity"
             android:label="@string/title_activity_food_list"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
          <activity
-            android:name=".DetailActivity"
-            android:parentActivityName=".Calendar_Activity">
+            android:name=".DetailActivity">
+           android:parentActivityName=".Calendar_Activity">
             <meta-data
                 android:name="android.detail.PARENT_ACTIVITY"
                 android:value=".Calendar_Activity" />
         </activity>
+        <activity android:name=".SettingsActivity"></activity>
     </application>
 
 </manifest>
