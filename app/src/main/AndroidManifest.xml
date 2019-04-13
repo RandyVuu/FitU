@@ -31,6 +31,9 @@
         <activity
             android:name=".AddFoodActivity">
         </activity>
+        <activity
+            android:name=".AddFoodPlan">
+        </activity>
          <activity
             android:name=".DetailActivity"
             android:parentActivityName=".Calendar_Activity">
@@ -38,7 +41,11 @@
                 android:name="android.detail.PARENT_ACTIVITY"
                 android:value=".Calendar_Activity" />
         </activity>
-
+        <activity
+            android:name=".FoodPlanActivity"
+            android:label="FoodPlan"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
