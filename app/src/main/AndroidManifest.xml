@@ -32,14 +32,16 @@
             android:label="@string/title_activity_food_list"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-         <activity
+        <activity
             android:name=".DetailActivity">
            android:parentActivityName=".Calendar_Activity">
             <meta-data
                 android:name="android.detail.PARENT_ACTIVITY"
                 android:value=".Calendar_Activity" />
         </activity>
-        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".SettingsActivity">
+
+        </activity>
     </application>
 
 </manifest>
