@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".FoodListActivity"
-    tools:showIn="@layout/activity_food_list"
-    tools:ignore="PrivateResource">
+    tools:showIn="@layout/activity_food_list">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

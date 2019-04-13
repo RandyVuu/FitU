@@ -1,28 +1,23 @@
-package com.umn.appdev.fitu.utils;
+package com.umn.appdev.fitu.Utils;
 
 import android.content.Context;
 import android.content.Intent;
-
+import androidx.annotation.NonNull;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import android.view.MenuItem;
 
 import com.umn.appdev.fitu.MainActivity;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.umn.appdev.fitu.CalendarActivity;
-import com.umn.appdev.fitu.R;
+import com.umn.appdev.fitu.Calendar_Activity;
 import com.umn.appdev.fitu.SettingsActivity;
-import com.umn.appdev.fitu.FoodActivity;
+import com.umn.appdev.fitu.FoodListActivity;
+import com.umn.appdev.fitu.R;
 
-import androidx.annotation.NonNull;
 
 public class BottomNavigationViewHelper {
 
-    private static final String TAG = "BottomNavigationViewHel";
+    private static final String TAG = "BottomNavigationViewHelper";
 
-    /*private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {*/
-    public static void enableNavigation(final Context context, BottomNavigationView mview) {
+    public static void enableNavigation(final Context context, @NonNull BottomNavigationView mview) {
         mview.setOnNavigationItemSelectedListener( new BottomNavigationView.OnNavigationItemSelectedListener(){
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -32,7 +27,7 @@ public class BottomNavigationViewHelper {
                         context.startActivity(intent1);
                         return true;
                     case R.id.navigation_calendar:
-                        Intent intent2 = new Intent(context, CalendarActivity.class);//ACTIVITY_NUM = 1
+                        Intent intent2 = new Intent(context, Calendar_Activity.class);//ACTIVITY_NUM = 1
                         context.startActivity(intent2);
                         return true;
                     case R.id.navigation_settings:
@@ -40,7 +35,7 @@ public class BottomNavigationViewHelper {
                         context.startActivity(intent3);
                         return true;
                     case R.id.navigation_food:
-                        Intent intent4 = new Intent(context, FoodActivity.class);//ACTIVITY_NUM = 3
+                        Intent intent4 = new Intent(context, FoodListActivity.class);//ACTIVITY_NUM = 3
                         context.startActivity(intent4);
                         return true;
                 }

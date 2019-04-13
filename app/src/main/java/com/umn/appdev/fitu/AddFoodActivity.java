@@ -6,13 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.umn.appdev.fitu.Utils.Utils;
 import com.umn.appdev.fitu.database.AppDatabase;
 import com.umn.appdev.fitu.database.FoodEntry;
-import com.umn.appdev.fitu.utils.Utils;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import androidx.appcompat.app.AppCompatActivity;
 

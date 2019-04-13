@@ -2,7 +2,6 @@
 package com.umn.appdev.fitu;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +10,8 @@ import android.widget.TextView;
 
 import java.text.DateFormat;
 import java.util.Calendar;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 
 public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.NumberViewHolder> {
@@ -51,8 +52,6 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.Number
     public int getItemCount(){
         return mNumberItems;
     }
-
-
 
 
 class NumberViewHolder extends RecyclerView.ViewHolder

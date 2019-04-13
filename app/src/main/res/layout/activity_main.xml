@@ -18,7 +18,7 @@
         android:hint="(200)"
         android:inputType="number"
         android:selectAllOnFocus="false"
-        android:textSize="10dp"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,8 +32,6 @@
         android:text="@string/carbs"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
-        <!--tools:id="fats" this creates a ref error-->
-
 
     <EditText
         android:id="@+id/numfat"
@@ -46,7 +44,7 @@
         android:hint="@string/examnum"
         android:inputType="number"
         android:selectAllOnFocus="false"
-        android:textSize="10sp"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -72,7 +70,7 @@
         android:hint="@string/examnum"
         android:inputType="number"
         android:selectAllOnFocus="false"
-        android:textSize="10dp"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -143,7 +141,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <android.support.design.widget.BottomNavigationView
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

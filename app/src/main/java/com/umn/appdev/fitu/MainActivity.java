@@ -1,29 +1,26 @@
 package com.umn.appdev.fitu;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
-import android.content.Intent;
 import android.os.Bundle;
-
-import android.view.MenuItem;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.umn.appdev.fitu.utils.BottomNavigationViewHelper;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.umn.appdev.fitu.Utils.BottomNavigationViewHelper;
 
 import java.util.ArrayList;
 
@@ -85,8 +82,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
-
-
     }
 
     private void setData(){
@@ -146,5 +141,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+
+
+
 
 }
