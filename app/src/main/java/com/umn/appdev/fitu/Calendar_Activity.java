@@ -1,3 +1,4 @@
+
 package com.umn.appdev.fitu;
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +13,7 @@ import android.view.MenuItem;
 import com.umn.appdev.fitu.Utils.BottomNavigationViewHelper;
 
 public class Calendar_Activity extends AppCompatActivity implements CalendarAdapter.ListItemClickListener {
-	
+
 	private static final String TAG = "CalendarActivity";
     private static final int ACTIVITY_NUM = 1;
 
@@ -44,7 +45,7 @@ public class Calendar_Activity extends AppCompatActivity implements CalendarAdap
         Intent intentToStartDetailActivity = new Intent(context, destinationClass);
         startActivity(intentToStartDetailActivity);
     }
-	
+
 	private void setupBottomNavigationView(){
         Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView");
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);

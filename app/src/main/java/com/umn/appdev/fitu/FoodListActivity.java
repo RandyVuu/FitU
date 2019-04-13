@@ -83,7 +83,7 @@ public class FoodListActivity extends AppCompatActivity implements FoodAdapter.L
         super.onResume();
         new LoadIntoDataBase().execute();
     }
-	
+
 	private void setupBottomNavigationView(){
         Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView");
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
