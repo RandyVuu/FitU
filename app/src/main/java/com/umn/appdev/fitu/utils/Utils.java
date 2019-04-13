@@ -1,4 +1,4 @@
-package com.umn.appdev.fitu.utils;
+package com.umn.appdev.fitu.Utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
