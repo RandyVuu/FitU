@@ -10,6 +10,11 @@ import androidx.room.Update;
 
 @Dao
 public interface PlanDao {
+    @Query("SELECT * FROM foodplan")
+    public List<FoodPlan> getFoodPlan();
+
+    @Query("SELECT * FROM foodplan WHERE id = :id")
+    public FoodPlan getItemByID(Long id);
 
     @Insert
     public void insert(FoodPlan Foodplans);
@@ -17,11 +22,5 @@ public interface PlanDao {
     public void update(FoodPlan Foodplans);
     @Delete
     public void delete(FoodPlan Foodplans);
-
-    @Query("SELECT * FROM foodplan")
-    public List<FoodPlan> getFoodPlan();
-
-    @Query("SELECT * FROM foodplan WHERE id = :id")
-    public FoodPlan getItemByID(Long id);
 
 }

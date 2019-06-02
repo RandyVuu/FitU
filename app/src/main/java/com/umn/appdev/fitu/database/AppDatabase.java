@@ -12,7 +12,7 @@ import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 @Database(entities = {FoodEntry.class, FoodPlan.class}, version = 1, exportSchema = false)
-@TypeConverters(DateConverter.class)
+@TypeConverters({DateConverter.class, Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase sInstance;
