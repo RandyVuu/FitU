@@ -45,13 +45,18 @@ public class AddFoodPlan extends AppCompatActivity {
         EditText mEditText;
         mEditText = (EditText) findViewById(R.id.FoodText);
         name = mEditText.getText().toString();
-        foodLists.add(name);
         count++;
-        //show if food is added
-        if (foodLists.contains(name)) {
+        //check if food is in foodentry
+        FoodEntry check = null;
+        check = mDataBase.foodDao().getFood(name);
+        //show if food is added or not
+        foodLists.add(name);
+        if (foodLists.contains(name) && (check != null)){
             Toast.makeText(getApplicationContext(), "added " + name, Toast.LENGTH_SHORT).show();
+
         }
         else{
+            //food is not in food database
             Toast.makeText(getApplicationContext(), "Not added " + name, Toast.LENGTH_SHORT).show();
 
         }
