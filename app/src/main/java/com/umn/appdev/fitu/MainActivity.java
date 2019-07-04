@@ -15,15 +15,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.*;
-import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.umn.appdev.fitu.Utils.BottomNavigationViewHelper;
 import com.umn.appdev.fitu.Utils.Utils;
@@ -53,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private double recogFats = 450;
     private double recogPro = 750;
     private String val;
-    EditText numInCal;
+    EditText foodcalname;
     EditText numInPro;
     EditText numInFat;
     EditText numInCab;
@@ -80,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mchart.setBackgroundColor(Color.TRANSPARENT);
         mchart.setMaxVisibleValueCount(40);
 
-        numInCal = (EditText) findViewById(R.id.foodid);
+        foodcalname = (EditText) findViewById(R.id.foodid);
         numInPro = (EditText) findViewById(R.id.numpro);
         numInFat = (EditText) findViewById(R.id.numfat);
         numInCab = (EditText) findViewById(R.id.numcarbs);
@@ -89,20 +85,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!numInCal.getText().toString().isEmpty()){foodname = numInCal.getText().toString();}
-                if(!numInPro.getText().toString().isEmpty()){protein = Integer.valueOf(numInPro.getText().toString());}
-                if(!numInFat.getText().toString().isEmpty()){fats = Integer.valueOf(numInFat.getText().toString());}
-                if(!numInCab.getText().toString().isEmpty()){carbs = Integer.valueOf(numInCab.getText().toString());}
-                if(cal == 0) {
+                if(!foodcalname.getText().toString().isEmpty()){foodname = foodcalname.getText().toString();}
+                if(!numInPro.getText().toString().isEmpty()){nutrients[0] = Integer.valueOf(numInPro.getText().toString());}
+                if(!numInFat.getText().toString().isEmpty()){nutrients[2] = Integer.valueOf(numInFat.getText().toString());}
+                if(!numInCab.getText().toString().isEmpty()){nutrients[1] = Integer.valueOf(numInCab.getText().toString());}
+                /*if(cal == 0) {
                     cal = (4*carbs) + (9*fats) + (4*protein);
                 }
                 // generates graph by reading global cal and the current cal values in the graph already ?????
-                setData(10);
+                //setData(10);
 
                 //retreive list of the entries that is related to the current date
 
                 //resets the global cal to 0
-                cal =0;
+                cal =0;*/
+                new LoadIntoDataBase().execute();
             }
         });
         //Load all food entry from current date into an array list
@@ -163,6 +160,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         //values of the stacked array
         for(int i = 0; i<count; i++){
+
             //consumed cals from macro
             float val1 = (float) ;
             // recommended cals from macro

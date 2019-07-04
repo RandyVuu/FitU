@@ -28,7 +28,7 @@ public class FoodEntry implements Serializable {
     @ColumnInfo(name = "date")
     private Date date;
 
-    public FoodEntry(int id, String name, double carbs, double fats, double protein, double calories,
+    public FoodEntry(int id, String name, double protein, double carbs, double fats, double calories,
                      int priority, Date date) {
         this.id = id;
         this.priority = priority;
