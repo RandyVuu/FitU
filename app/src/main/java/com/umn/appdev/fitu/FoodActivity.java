@@ -9,7 +9,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.umn.appdev.fitu.R;
-import com.umn.appdev.fitu.utils.BottomNavigationViewHelper;
+import com.umn.appdev.fitu.Utils.BottomNavigationViewHelper;
 
 import androidx.appcompat.app.AppCompatActivity;
 
