@@ -44,10 +44,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private double protein =0;
     private double fats =0;
     private double carbs =0;
-    private double recogCal = 2500 ;
-    private double recogCarb = 1250;
-    private double recogFats = 450;
-    private double recogPro = 750;
     private String val;
     EditText foodcalname;
     EditText numInPro;
@@ -55,12 +51,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     EditText numInCab;
     Button submitButton;
     double[] nutrients = new double[3];
+
     private AppDatabase mDataBase;
 
     ArrayList<PieEntry> values = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        double[] dnutrients = new double[4];
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setupBottomNavigationView();
@@ -109,11 +108,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
         //loop through lsit of entries and add the information for the current date into vals and update graph
         for (FoodEntry fde : entries) {
+
+            protein += fde.getProtein();
             carbs += fde.getCarbs();
             fats += fde.getFats();
-            protein += fde.getProtein();
             cal += fde.getCalories();
+
         }
+
+        dnutrients[0] = protein;
+        dnutrients[1] = carbs;
+        dnutrients[2] = fats;
+        dnutrients[3] = cal;
+
+        setData(dnutrients);
 
     }
 
@@ -155,19 +163,53 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mchart.invalidate();
     }*/
 
-    public void setData(int count){
+    public void setData(double count []){
+        double recogCal = 2500 ;
+        double recogCarb = 1250;
+        double recogFats = 450;
+        double recogPro = 750;
+
         ArrayList<BarEntry> yValues = new ArrayList<>();
 
         //values of the stacked array
-        for(int i = 0; i<count; i++){
+        for(int i = 0; i<count.length; i++){
+            if(i == 0) {
+                //consumed cals from macro
+                float val1 = ( float)count[i];
+                // recommended cals from macro
+                float val2 = ( float)(recogPro - (4*count[i]));
+                if(val2 < 0) val2 = 0;
+                //float val3 = (float) ;
 
-            //consumed cals from macro
-            float val1 = (float) ;
-            // recommended cals from macro
-            float val2 = (float) ;
-            //float val3 = (float) ;
+                yValues.add(new BarEntry(i, new float[]{val1, val2}));
+            }else if(i == 1) {
+                //consumed cals from macro
+                float val1 = ( float)count[i];
+                // recommended cals from macro
+                float val2 = ( float)(recogCarb - (4*count[i]));
+                if(val2 < 0) val2 = 0;
+                //float val3 = (float) ;
 
-            yValues.add(new BarEntry(i,new float[]{val1,val2}));
+                yValues.add(new BarEntry(i, new float[]{val1, val2}));
+            }else if(i == 2) {
+                //consumed cals from macro
+                float val1 = ( float)count[i];
+                // recommended cals from macro
+                float val2 = ( float)(recogFats - (9*count[i]));
+                if(val2 < 0) val2 = 0;
+                //float val3 = (float) ;
+
+                yValues.add(new BarEntry(i, new float[]{val1, val2}));
+            }else if(i == 3) {
+                //consumed cals from macro
+                float val1 = ( float)count[i];
+                // recommended cals from macro
+                float val2 = ( float)(recogCal - count[i]);
+                if(val2 < 0) val2 = 0;
+                //float val3 = (float) ;
+
+                yValues.add(new BarEntry(i, new float[]{val1, val2}));
+            }
 
         }
         BarDataSet set1;

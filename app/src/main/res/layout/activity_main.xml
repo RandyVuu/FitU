@@ -31,7 +31,7 @@
         android:layout_marginTop="472dp"
         android:text="@string/carbs"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/numfat"
@@ -106,11 +106,12 @@
         android:ems="10"
         android:hint="@string/examstr"
         android:inputType="textAutoCorrect"
-        android:textSize="10sp"
+        android:selectAllOnFocus="false"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-  <!--  <com.github.mikephil.charting.charts.PieChart
+    <!--  <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/chart1"
         android:layout_width="match_parent"
         android:layout_height="242dp"
@@ -135,6 +136,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></com.github.mikephil.charting.charts.BarChart>
+
     <Spinner
         android:id="@+id/spinner1"
         android:layout_width="97dp"
@@ -178,7 +180,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/navigation" />
-
 
 
     <Button
