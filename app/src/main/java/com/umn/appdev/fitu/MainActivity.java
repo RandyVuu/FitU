@@ -102,9 +102,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
         //Load all food entry from current date into an array list
-        List <FoodEntry> entries = MainActivity.entry.foodDao().loadAllFoods(Utils.getCurrentDate());
+
+        List <FoodEntry> entries;
+        Thread nThread = new Thread() {
+            public void run(List<FoodEntry> entries) {
+                super.run();
+                entries = AppDatabase.getInstance(MainActivity.this).foodDao().loadAllFoods(Utils.getCurrentDate());
+            }
+        };
+
         if(entries.size() == 0){
-            entries = MainActivity.entry.foodDao().loadAllFoods(Utils.getYesterdayDateString());
+            entries = AppDatabase.getInstance(this).foodDao().loadAllFoods(Utils.getYesterdayDateString());
         }
         //loop through lsit of entries and add the information for the current date into vals and update graph
         for (FoodEntry fde : entries) {
