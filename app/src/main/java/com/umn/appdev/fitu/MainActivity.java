@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     EditText numInFat;
     EditText numInCab;
     Button submitButton;
+    List <FoodEntry> entries;
     double[] nutrients = new double[3];
 
     private AppDatabase mDataBase;
@@ -103,25 +104,22 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         });
         //Load all food entry from current date into an array list
 
-        List <FoodEntry> entries;
-        Thread nThread = new Thread() {
-            public void run(List<FoodEntry> entries) {
-                super.run();
-                entries = AppDatabase.getInstance(MainActivity.this).foodDao().loadAllFoods(Utils.getCurrentDate());
-            }
-        };
 
-        if(entries.size() == 0){
-            entries = AppDatabase.getInstance(this).foodDao().loadAllFoods(Utils.getYesterdayDateString());
+        new LoadFromDataBase().execute();
+
+        if(entries == null||entries.size() == 0){
+            new LoadFromDataBase2().execute();
         }
         //loop through lsit of entries and add the information for the current date into vals and update graph
-        for (FoodEntry fde : entries) {
+        if(entries != null) {
+            for (FoodEntry fde : entries) {
 
-            protein += fde.getProtein();
-            carbs += fde.getCarbs();
-            fats += fde.getFats();
-            cal += fde.getCalories();
+                protein += fde.getProtein();
+                carbs += fde.getCarbs();
+                fats += fde.getFats();
+                cal += fde.getCalories();
 
+            }
         }
 
         dnutrients[0] = protein;
@@ -267,6 +265,25 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
+    class LoadFromDataBase extends AsyncTask<Void, Void, Void> {
 
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            entries = AppDatabase.getInstance(MainActivity.this).foodDao().loadAllFoods(Utils.getCurrentDate());
+            return null;
+        }
+
+    }
+    class LoadFromDataBase2 extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            entries = AppDatabase.getInstance(MainActivity.this).foodDao().loadAllFoods(Utils.getYesterdayDateString());
+            return null;
+        }
+
+    }
 
 }
