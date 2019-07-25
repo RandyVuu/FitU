@@ -11,7 +11,7 @@ import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.umn.appdev.fitu.Utils.BottomNavigationViewHelper;
+import com.umn.appdev.fitu.utils.BottomNavigationViewHelper;
 import com.umn.appdev.fitu.Utils.Utils;
 import com.umn.appdev.fitu.database.AppDatabase;
 import com.umn.appdev.fitu.database.FoodEntry;

@@ -1,11 +1,13 @@
 package com.umn.appdev.fitu;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,10 +23,10 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.*;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.umn.appdev.fitu.Utils.BottomNavigationViewHelper;
 import com.umn.appdev.fitu.Utils.Utils;
 import com.umn.appdev.fitu.database.AppDatabase;
 import com.umn.appdev.fitu.database.FoodEntry;
+import com.umn.appdev.fitu.utils.BottomNavigationViewHelper;
 
 import java.util.*;
 
@@ -131,7 +133,22 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
-   /* private void setData(){
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.settings_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.food_settings) {
+            startActivity(new Intent(this, SettingsActivity.class));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    /* private void setData(){
         PieDataSet dataSet;
         if(!values.isEmpty()){
             ArrayList<PieEntry> newvalues = new ArrayList<>();
