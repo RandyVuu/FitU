@@ -1,4 +1,4 @@
-package com.umn.appdev.fitu.Utils;
+package com.umn.appdev.fitu.utils;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,11 +6,12 @@ import androidx.annotation.NonNull;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import android.view.MenuItem;
 
+import com.umn.appdev.fitu.Food_Main;
 import com.umn.appdev.fitu.MainActivity;
 import com.umn.appdev.fitu.Calendar_Activity;
-import com.umn.appdev.fitu.SettingsActivity;
 import com.umn.appdev.fitu.FoodListActivity;
 import com.umn.appdev.fitu.R;
+import com.umn.appdev.fitu.SettingsActivity;
 
 
 public class BottomNavigationViewHelper {
@@ -30,12 +31,12 @@ public class BottomNavigationViewHelper {
                         Intent intent2 = new Intent(context, Calendar_Activity.class);//ACTIVITY_NUM = 1
                         context.startActivity(intent2);
                         return true;
-                    case R.id.navigation_settings:
-                        Intent intent3 = new Intent(context, SettingsActivity.class);//ACTIVITY_NUM = 2
-                        context.startActivity(intent3);
-                        return true;
                     case R.id.navigation_food:
+                        /**
                         Intent intent4 = new Intent(context, FoodListActivity.class);//ACTIVITY_NUM = 3
+                        context.startActivity(intent4);
+                        return true;**/
+                        Intent intent4 = new Intent(context, Food_Main.class);//ACTIVITY_NUM = 2 ?
                         context.startActivity(intent4);
                         return true;
                 }

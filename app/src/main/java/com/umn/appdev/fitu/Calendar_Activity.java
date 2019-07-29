@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import com.umn.appdev.fitu.Utils.BottomNavigationViewHelper;
+import com.umn.appdev.fitu.utils.BottomNavigationViewHelper;
 
 public class Calendar_Activity extends AppCompatActivity implements CalendarAdapter.ListItemClickListener {
 
