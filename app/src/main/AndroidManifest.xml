@@ -44,6 +44,17 @@
                 android:name="android.detail.PARENT_ACTIVITY"
                 android:value=".Calendar_Activity" />
         </activity>
+        <activity
+            android:name=".AddFoodPlan">
+        </activity>
+        <activity
+            android:name=".FoodPlanActivity"
+            android:label="FoodPlan"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".Food_Main">
+        </activity>
     </application>
 
 </manifest>
