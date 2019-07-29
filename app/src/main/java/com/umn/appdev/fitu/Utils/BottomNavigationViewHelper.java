@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import android.view.MenuItem;
 
+import com.umn.appdev.fitu.Food_Main;
 import com.umn.appdev.fitu.MainActivity;
 import com.umn.appdev.fitu.Calendar_Activity;
 import com.umn.appdev.fitu.FoodListActivity;
@@ -31,7 +32,11 @@ public class BottomNavigationViewHelper {
                         context.startActivity(intent2);
                         return true;
                     case R.id.navigation_food:
+                        /**
                         Intent intent4 = new Intent(context, FoodListActivity.class);//ACTIVITY_NUM = 3
+                        context.startActivity(intent4);
+                        return true;**/
+                        Intent intent4 = new Intent(context, Food_Main.class);//ACTIVITY_NUM = 2 ?
                         context.startActivity(intent4);
                         return true;
                 }

@@ -16,15 +16,15 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.umn.appdev.fitu.utils.BottomNavigationViewHelper;
 
 public class Food_Main extends AppCompatActivity {
-    //private static final int ACTIVITY_NUM = 2;
-    //private static final String TAG = "Food_Main";
-    Context context = this;
+    private static final int ACTIVITY_NUM = 2;
+    private static final String TAG = "Food_Main";
+    Context mContext = Food_Main.this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.food_main);
-        //setupBottomNavigationView();
+        setupBottomNavigationView();
 
     }
     public void gotoFood(View v){
@@ -36,15 +36,12 @@ public class Food_Main extends AppCompatActivity {
         startActivity(i);
 
     }
-    /**
     private void setupBottomNavigationView(){
         Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView");
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        com.umn.appdev.fitu.utils.BottomNavigationViewHelper.enableNavigation(context, navigation);
+        BottomNavigationViewHelper.enableNavigation(mContext, navigation);
         Menu menu = navigation.getMenu();
         MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
         menuItem.setChecked(true);
     }
-     **/
-
 }

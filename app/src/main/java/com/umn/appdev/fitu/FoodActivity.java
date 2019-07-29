@@ -12,11 +12,11 @@ import com.umn.appdev.fitu.R;
 import com.umn.appdev.fitu.utils.BottomNavigationViewHelper;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+//what is this class for?
 public class FoodActivity extends AppCompatActivity {
 
-    private static final String TAG = "FoodActivity";
-    private static final int ACTIVITY_NUM = 2;
+    //private static final String TAG = "FoodActivity";
+    //private static final int ACTIVITY_NUM = 2;
 
     private Context mContext = FoodActivity.this;
 
@@ -27,7 +27,7 @@ public class FoodActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //setupBottomNavigationView();
     }
-
+    /**
     private void setupBottomNavigationView(){
         Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView");
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -36,5 +36,5 @@ public class FoodActivity extends AppCompatActivity {
         MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
         menuItem.setChecked(true);
     }
-
+    **/
 }
