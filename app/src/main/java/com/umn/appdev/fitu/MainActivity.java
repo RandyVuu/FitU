@@ -115,7 +115,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         //loop through lsit of entries and add the information for the current date into vals and update graph
         if(entries != null) {
             for (FoodEntry fde : entries) {
-
                 protein += fde.getProtein();
                 carbs += fde.getCarbs();
                 fats += fde.getFats();
