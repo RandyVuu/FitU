@@ -93,10 +93,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!foodcalname.getText().toString().isEmpty()){foodname = foodcalname.getText().toString();}
-                if(!numInPro.getText().toString().isEmpty()){nutrients[0] = Integer.valueOf(numInPro.getText().toString());}
-                if(!numInFat.getText().toString().isEmpty()){nutrients[2] = Integer.valueOf(numInFat.getText().toString());}
-                if(!numInCab.getText().toString().isEmpty()){nutrients[1] = Integer.valueOf(numInCab.getText().toString());}
+                if (!foodcalname.getText().toString().isEmpty()) {
+                    foodname = foodcalname.getText().toString();
+                }
+                if (!numInPro.getText().toString().isEmpty()) {
+                    nutrients[0] = Integer.valueOf(numInPro.getText().toString());
+                }
+                if (!numInFat.getText().toString().isEmpty()) {
+                    nutrients[2] = Integer.valueOf(numInFat.getText().toString());
+                }
+                if (!numInCab.getText().toString().isEmpty()) {
+                    nutrients[1] = Integer.valueOf(numInCab.getText().toString());
+                }
                 /*if(cal == 0) {
                     cal = (4*carbs) + (9*fats) + (4*protein);
                 }
@@ -111,12 +119,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                 new LoadFromDataBase().execute();
 
-                if(entries == null||entries.size() == 0){
+                if (entries == null || entries.size() == 0) {
                     new LoadFromDataBase2().execute();
                 }
                 //loop through lsit of entries and add the information for the current date into vals and update graph
-                if(entries != null) {
-                    for (FoodEntry fde : entries) {
+//                if(entries != null) {
+//                    for (FoodEntry fde : entries) {
+            }
+        });
 
         if(entries == null||entries.size() == 0){
             new LoadFromDataBase2().execute();
@@ -136,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                 setData(dnutrients);
             }
-        });
+        }
         //Load all food entry from current date into an array list
 
         setData(dnutrients);
