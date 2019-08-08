@@ -16,17 +16,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.formatter.*;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.umn.appdev.fitu.Utils.Utils;
 import com.umn.appdev.fitu.database.AppDatabase;
 import com.umn.appdev.fitu.database.FoodEntry;
 import com.umn.appdev.fitu.utils.BottomNavigationViewHelper;
+
+import com.anychart.AnyChart;
+import com.anychart.AnyChartView;
+import com.anychart.chart.common.dataentry.DataEntry;
+import com.anychart.chart.common.dataentry.ValueDataEntry;
+import com.anychart.chart.common.listener.Event;
+import com.anychart.chart.common.listener.ListenersInterface;
+import com.anychart.charts.Pie;
+import com.anychart.enums.Align;
+import com.anychart.enums.LegendLayout;
+
 
 import java.util.*;
 
@@ -39,8 +44,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private static final int ACTIVITY_NUM = 0;
 
     private Context mContext = MainActivity.this;
-    //private PieChart mchart;
-    private BarChart mchart;
+    private AnyChartView mchart;
+
     private String foodname;
     private double cal =0;
     private double protein =0;
@@ -57,15 +62,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private AppDatabase mDataBase;
 
-    ArrayList<PieEntry> values = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        double[] dnutrients = new double[4];
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setupBottomNavigationView();
+
+        mDataBase = AppDatabase.getInstance(getApplicationContext());
+
+        final double[] dnutrients = new double[4];
 
         Spinner spinner = findViewById(R.id.spinner1);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -74,9 +82,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
-        mchart = (BarChart) findViewById(R.id.chart1);
+        mchart =  findViewById(R.id.chart1);
         mchart.setBackgroundColor(Color.TRANSPARENT);
-        mchart.setMaxVisibleValueCount(40);
+        //mchart.setMaxVisibleValueCount(40);
 
         foodcalname = (EditText) findViewById(R.id.foodid);
         numInPro = (EditText) findViewById(R.id.numpro);
@@ -102,12 +110,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 //resets the global cal to 0
                 cal =0;*/
                 new LoadIntoDataBase().execute();
-            }
-        });
-        //Load all food entry from current date into an array list
 
+                new LoadFromDataBase().execute();
 
-        new LoadFromDataBase().execute();
+                if(entries == null||entries.size() == 0){
+                    new LoadFromDataBase2().execute();
+                }
+                //loop through lsit of entries and add the information for the current date into vals and update graph
+                if(entries != null) {
+                    for (FoodEntry fde : entries) {
 
         if(entries == null||entries.size() == 0){
             new LoadFromDataBase2().execute();
@@ -120,15 +131,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 fats += fde.getFats();
                 cal += fde.getCalories();
 
-            }
-        }
+                dnutrients[0] = protein;
+                dnutrients[1] = carbs;
+                dnutrients[2] = fats;
+                dnutrients[3] = cal;
 
-        dnutrients[0] = protein;
-        dnutrients[1] = carbs;
-        dnutrients[2] = fats;
-        dnutrients[3] = cal;
+                setData(dnutrients);
+            }
+        });
+        //Load all food entry from current date into an array list
 
         setData(dnutrients);
+
 
     }
 
@@ -186,66 +200,32 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }*/
 
     public void setData(double count []){
-        double recogCal = 2500 ;
-        double recogCarb = 1250;
-        double recogFats = 450;
-        double recogPro = 750;
 
-        ArrayList<BarEntry> yValues = new ArrayList<>();
+        Pie pie = AnyChart.pie();
 
-        //values of the stacked array
-        for(int i = 0; i<count.length; i++){
-            if(i == 0) {
-                //consumed cals from macro
-                float val1 = ( float)count[i];
-                // recommended cals from macro
-                float val2 = ( float)(recogPro - (4*count[i]));
-                if(val2 < 0) val2 = 0;
-                //float val3 = (float) ;
+        List<DataEntry> data = new ArrayList<>();
+        data.add(new ValueDataEntry("Protien", (count[0]*4)));
+        data.add(new ValueDataEntry("Carbs", (count[1]*4)));
+        data.add(new ValueDataEntry("Fats", (4*9)));
+        data.add(new ValueDataEntry("Total Calories", (count[3])));
 
-                yValues.add(new BarEntry(i, new float[]{val1, val2}));
-            }else if(i == 1) {
-                //consumed cals from macro
-                float val1 = ( float)count[i];
-                // recommended cals from macro
-                float val2 = ( float)(recogCarb - (4*count[i]));
-                if(val2 < 0) val2 = 0;
-                //float val3 = (float) ;
+        pie.data(data);
 
-                yValues.add(new BarEntry(i, new float[]{val1, val2}));
-            }else if(i == 2) {
-                //consumed cals from macro
-                float val1 = ( float)count[i];
-                // recommended cals from macro
-                float val2 = ( float)(recogFats - (9*count[i]));
-                if(val2 < 0) val2 = 0;
-                //float val3 = (float) ;
+        pie.title("Daily Calories source");
 
-                yValues.add(new BarEntry(i, new float[]{val1, val2}));
-            }else if(i == 3) {
-                //consumed cals from macro
-                float val1 = ( float)count[i];
-                // recommended cals from macro
-                float val2 = ( float)(recogCal - count[i]);
-                if(val2 < 0) val2 = 0;
-                //float val3 = (float) ;
+        pie.labels().position("outside");
 
-                yValues.add(new BarEntry(i, new float[]{val1, val2}));
-            }
+        //pie.legend().title().enabled(true);
+        /*pie.legend().title()
+                .text("")
+                .padding(0d, 0d, 10d, 0d);*/
 
-        }
-        BarDataSet set1;
+        pie.legend()
+                .position("center-top")
+                .itemsLayout(LegendLayout.HORIZONTAL)
+                .align(Align.CENTER);
 
-        set1 = new BarDataSet(yValues, "Daily Micro Consumption");
-        set1.setDrawIcons(false);
-        set1.setStackLabels(new String[]{"Consumed","Remaining","Max Suggested"});
-
-        BarData data = new BarData(set1);
-        data.setValueFormatter(new PercentFormatter());
-
-        mchart.setData(data);
-        mchart.setFitBars(true);
-        mchart.invalidate();
+        mchart.setChart(pie);
 
     }
 
@@ -286,7 +266,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         @Override
         protected Void doInBackground(Void... voids) {
 
-            entries = AppDatabase.getInstance(MainActivity.this).foodDao().loadAllFoods(Utils.getCurrentDate());
+            entries = mDataBase.getInstance(MainActivity.this).foodDao().loadAllFoods(Utils.getCurrentDate());
             return null;
         }
 
@@ -296,7 +276,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         @Override
         protected Void doInBackground(Void... voids) {
 
-            entries = AppDatabase.getInstance(MainActivity.this).foodDao().loadAllFoods(Utils.getYesterdayDateString());
+            entries = mDataBase.getInstance(MainActivity.this).foodDao().loadAllFoods(Utils.getYesterdayDateString());
             return null;
         }
 
