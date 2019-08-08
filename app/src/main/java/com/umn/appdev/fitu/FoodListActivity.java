@@ -16,6 +16,9 @@ import com.umn.appdev.fitu.Utils.Utils;
 import com.umn.appdev.fitu.database.AppDatabase;
 import com.umn.appdev.fitu.database.FoodEntry;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,7 +29,7 @@ public class FoodListActivity extends AppCompatActivity implements FoodAdapter.L
 	private static final String TAG = "FoodActivity";
     private static final int ACTIVITY_NUM = 2;
     private Context mContext = FoodListActivity.this;
-
+    private Date date;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -46,7 +49,7 @@ public class FoodListActivity extends AppCompatActivity implements FoodAdapter.L
         @Override
         protected Void doInBackground(Void... voids) {
 
-            mDataset = mDataBase.foodDao().loadAllFoods(Utils.getCurrentDate());
+            mDataset = mDataBase.foodDao().loadAllFoods(date);
             return null;
         }
 
@@ -62,6 +65,17 @@ public class FoodListActivity extends AppCompatActivity implements FoodAdapter.L
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_list);
+        Intent intent = getIntent();
+        if (intent == null)
+                date = Utils.getCurrentDate();
+        else {
+            String sdate = intent.getStringExtra("date");
+            try {
+                date = new SimpleDateFormat("dd/MM/yyyy").parse(sdate);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
         mDataBase = AppDatabase.getInstance(getApplicationContext());
         new LoadIntoDataBase().execute();
         recyclerView = (RecyclerView) findViewById(R.id.food_recycler_view);
