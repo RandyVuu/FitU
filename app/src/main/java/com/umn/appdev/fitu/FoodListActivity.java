@@ -11,7 +11,7 @@ import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.umn.appdev.fitu.utils.BottomNavigationViewHelper;
+import com.umn.appdev.fitu.Utils.BottomNavigationViewHelper;
 import com.umn.appdev.fitu.Utils.Utils;
 import com.umn.appdev.fitu.database.AppDatabase;
 import com.umn.appdev.fitu.database.FoodEntry;
@@ -67,7 +67,7 @@ public class FoodListActivity extends AppCompatActivity implements FoodAdapter.L
         recyclerView = (RecyclerView) findViewById(R.id.food_recycler_view);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        //setupBottomNavigationView();
+        setupBottomNavigationView();
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +83,7 @@ public class FoodListActivity extends AppCompatActivity implements FoodAdapter.L
         super.onResume();
         new LoadIntoDataBase().execute();
     }
-    /**
+
 	private void setupBottomNavigationView(){
         Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView");
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -92,6 +92,6 @@ public class FoodListActivity extends AppCompatActivity implements FoodAdapter.L
         MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
         menuItem.setChecked(true);
     }
-    **/
+
 
 }
