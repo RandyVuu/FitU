@@ -30,6 +30,7 @@ public class Calendar_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar_);
+        setupBottomNavigationView();
         mCalendarView = (CalendarView) findViewById(R.id.calendarView);
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override

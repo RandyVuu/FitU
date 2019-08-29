@@ -66,15 +66,17 @@ public class FoodListActivity extends AppCompatActivity implements FoodAdapter.L
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_list);
         Intent intent = getIntent();
-        if (intent == null)
-                date = Utils.getCurrentDate();
-        else {
+        if (intent.hasExtra("date")) {
             String sdate = intent.getStringExtra("date");
             try {
                 date = new SimpleDateFormat("dd/MM/yyyy").parse(sdate);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+        }
+        else {
+            
+            date = Utils.getCurrentDate();
         }
         mDataBase = AppDatabase.getInstance(getApplicationContext());
         new LoadIntoDataBase().execute();
