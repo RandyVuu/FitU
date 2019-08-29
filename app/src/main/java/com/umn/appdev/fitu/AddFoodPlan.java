@@ -37,8 +37,22 @@ public class AddFoodPlan extends AppCompatActivity {
         EditText mEditText;
         mEditText = (EditText) findViewById(R.id.name_input);
         name = mEditText.getText().toString();
-        new LoadIntoDataBase().execute();
-        this.finish();
+        FoodPlan checkDupe = null;
+
+        //check for dupe foodplans
+        checkDupe = mDataBase.planDao().getFoodPlan(name);
+
+        //foodplan is not unique
+        if (checkDupe != null){
+            Toast.makeText(getApplicationContext(), "Not added " + name, Toast.LENGTH_SHORT).show();
+
+        }
+        else{
+            Toast.makeText(getApplicationContext(), "added " + name, Toast.LENGTH_SHORT).show();
+            new LoadIntoDataBase().execute();
+            this.finish();
+
+        }
     }
     /** Add food name to foodplan array**/
     public void onAdd(View view){
@@ -50,10 +64,10 @@ public class AddFoodPlan extends AppCompatActivity {
         FoodEntry check = null;
         check = mDataBase.foodDao().getFood(name);
         //show if food is added or not
-        foodLists.add(name);
-        if (foodLists.contains(name) && (check != null)){
-            Toast.makeText(getApplicationContext(), "added " + name, Toast.LENGTH_SHORT).show();
 
+        if (check != null){
+            Toast.makeText(getApplicationContext(), "added " + name, Toast.LENGTH_SHORT).show();
+            foodLists.add(name);
         }
         else{
             //food is not in food database

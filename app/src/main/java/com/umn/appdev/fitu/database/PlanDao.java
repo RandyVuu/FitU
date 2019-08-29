@@ -16,6 +16,9 @@ public interface PlanDao {
     @Query("SELECT * FROM foodplan WHERE id = :id")
     public FoodPlan getItemByID(Long id);
 
+    @Query("SELECT * FROM foodplan WHERE food_name = :fName LIMIT 1 ")
+    FoodPlan getFoodPlan(String fName);
+
     @Insert
     public void insert(FoodPlan Foodplans);
     @Update
