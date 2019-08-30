@@ -18,14 +18,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.umn.appdev.fitu.Utils.BottomNavigationViewHelper;
 import com.umn.appdev.fitu.Utils.Utils;
 import com.umn.appdev.fitu.database.AppDatabase;
-import com.umn.appdev.fitu.database.FoodEntry;
+import com.umn.appdev.fitu.database.CalendarEntry;
 
 import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
 import com.anychart.chart.common.dataentry.DataEntry;
 import com.anychart.chart.common.dataentry.ValueDataEntry;
-import com.anychart.chart.common.listener.Event;
-import com.anychart.chart.common.listener.ListenersInterface;
 import com.anychart.charts.Pie;
 import com.anychart.enums.Align;
 import com.anychart.enums.LegendLayout;
@@ -55,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     EditText numInFat;
     EditText numInCab;
     Button submitButton;
-    List <FoodEntry> entries;
+    List <CalendarEntry> entries;
     double[] nutrients = new double[3];
 
     private AppDatabase mDataBase;
@@ -124,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 }
                 //loop through lsit of entries and add the information for the current date into vals and update graph
 //                if(entries != null) {
-//                    for (FoodEntry fde : entries) {
+//                    for (CalendarEntry fde : entries) {
             }
         });
 
@@ -133,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
         //loop through lsit of entries and add the information for the current date into vals and update graph
         if(entries != null) {
-            for (FoodEntry fde : entries) {
+            for (CalendarEntry fde : entries) {
                 protein += fde.getProtein();
                 carbs += fde.getCarbs();
                 fats += fde.getFats();
@@ -246,9 +244,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         @Override
         protected Void doInBackground(Void... voids) {
-            FoodEntry entry = new FoodEntry(foodname,nutrients[0],nutrients[1],nutrients[2],
+            CalendarEntry entry = new CalendarEntry(foodname,nutrients[0],nutrients[1],nutrients[2],
                     ++AddFoodActivity.count, Utils.getCurrentDate());
-            mDataBase.foodDao().insertFood(entry);
+            mDataBase.CalendarDao().insertFood(entry);
             return null;
         }
 
@@ -259,7 +257,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         @Override
         protected Void doInBackground(Void... voids) {
 
-            entries = mDataBase.getInstance(MainActivity.this).foodDao().loadAllFoods(Utils.getCurrentDate());
+            entries = mDataBase.getInstance(MainActivity.this).CalendarDao().loadAllFoods(Utils.getCurrentDate());
             return null;
         }
 
@@ -269,7 +267,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         @Override
         protected Void doInBackground(Void... voids) {
 
-            entries = mDataBase.getInstance(MainActivity.this).foodDao().loadAllFoods(Utils.getYesterdayDateString());
+            entries = mDataBase.getInstance(MainActivity.this).CalendarDao().loadAllFoods(Utils.getYesterdayDateString());
             return null;
         }
 

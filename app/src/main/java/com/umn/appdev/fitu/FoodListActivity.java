@@ -14,7 +14,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.umn.appdev.fitu.Utils.BottomNavigationViewHelper;
 import com.umn.appdev.fitu.Utils.Utils;
 import com.umn.appdev.fitu.database.AppDatabase;
-import com.umn.appdev.fitu.database.FoodEntry;
+import com.umn.appdev.fitu.database.CalendarEntry;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -34,8 +34,8 @@ public class FoodListActivity extends AppCompatActivity implements FoodAdapter.L
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private AppDatabase mDataBase;
-    private FoodEntry clickedFoodEntry;
-    private List<FoodEntry> mDataset;
+    private CalendarEntry clickedCalendarEntry;
+    private List<CalendarEntry> mDataset;
 
     @Override
     public void onListItemClick(int clickedItemIndex) {
@@ -49,7 +49,7 @@ public class FoodListActivity extends AppCompatActivity implements FoodAdapter.L
         @Override
         protected Void doInBackground(Void... voids) {
 
-            mDataset = mDataBase.foodDao().loadAllFoods(date);
+            mDataset = mDataBase.CalendarDao().loadAllFoods(date);
             return null;
         }
 

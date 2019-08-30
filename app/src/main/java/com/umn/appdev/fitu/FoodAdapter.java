@@ -6,9 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.umn.appdev.fitu.database.FoodEntry;
-
-import org.w3c.dom.Text;
+import com.umn.appdev.fitu.database.CalendarEntry;
 
 import java.util.List;
 
@@ -16,10 +14,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder>  {
-    private List<FoodEntry> mDataset;
+    private List<CalendarEntry> mDataset;
     private static int viewHoldeCount = 0;
     final private ListemItemClickListener mOnClickListener;
-    public FoodAdapter(@NonNull List<FoodEntry> dataset, ListemItemClickListener listener) {
+    public FoodAdapter(@NonNull List<CalendarEntry> dataset, ListemItemClickListener listener) {
         mDataset = dataset;
         mOnClickListener = listener;
     }

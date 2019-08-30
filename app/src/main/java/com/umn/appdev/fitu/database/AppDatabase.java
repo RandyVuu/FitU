@@ -6,7 +6,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-@Database(entities = {FoodEntry.class}, version = 1, exportSchema = false)
+@Database(entities = {CalendarEntry.class}, version = 1, exportSchema = false)
 @TypeConverters(DateConverter.class)
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -18,5 +18,5 @@ public abstract class AppDatabase extends RoomDatabase {
         }
         return sInstance;
     }
-    public abstract FoodDao foodDao();
+    public abstract CalendarDao CalendarDao();
 }

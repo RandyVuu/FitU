@@ -9,8 +9,8 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "food")
-public class FoodEntry implements Serializable {
+@Entity(tableName = "calendar")
+public class CalendarEntry implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
@@ -28,8 +28,8 @@ public class FoodEntry implements Serializable {
     @ColumnInfo(name = "date")
     private Date date;
 
-    public FoodEntry(int id, String name, double protein, double carbs, double fats, double calories,
-                     int priority, Date date) {
+    public CalendarEntry(int id, String name, double protein, double carbs, double fats, double calories,
+                         int priority, Date date) {
         this.id = id;
         this.priority = priority;
         this.name = name;
@@ -40,7 +40,7 @@ public class FoodEntry implements Serializable {
         this.date = date;
     }
     @Ignore
-    public FoodEntry(String name, double protein, double carbs, double fats, int priority, Date date) {
+    public CalendarEntry(String name, double protein, double carbs, double fats, int priority, Date date) {
         this.priority = priority;
         this.name = name;
         this.carbs = carbs;
