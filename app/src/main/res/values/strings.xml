@@ -1,4 +1,5 @@
 <resources>
+    <string name="title_activity_cfood_list">CalendarFoodList</string>
     <string name="title_activity_food_list">FoodList</string>
 	<string name="app_name">FitU</string>
     <string name="title_home">Home</string>

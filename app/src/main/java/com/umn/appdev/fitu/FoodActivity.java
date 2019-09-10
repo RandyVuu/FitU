@@ -25,9 +25,9 @@ public class FoodActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setupBottomNavigationView();
+        //setupBottomNavigationView();
     }
-
+    /*
     private void setupBottomNavigationView(){
         Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView");
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -35,7 +35,7 @@ public class FoodActivity extends AppCompatActivity {
         Menu menu = navigation.getMenu();
         MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
         menuItem.setChecked(true);
-    }
+    }*/
 
 
 }

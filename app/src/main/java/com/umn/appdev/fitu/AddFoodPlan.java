@@ -49,8 +49,8 @@ public class AddFoodPlan extends AppCompatActivity {
         name = mEditText.getText().toString();
         count++;
         //check if food is in foodentry
-        CalendarEntry check = null;
-        check = mDataBase.CalendarDao().getFood(name);
+        FoodEntry check = null;
+        check = mDataBase.foodDao().getFood(name);
         //show if food is added or not
         foodLists.add(name);
         if (foodLists.contains(name) && (check != null)){

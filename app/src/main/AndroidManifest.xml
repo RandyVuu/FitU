@@ -26,6 +26,19 @@
             </intent-filter>
         </activity>
         <activity
+            android:name = ".Food_Main"
+            android:label= "FoodMain">
+        </activity>
+        <activity
+            android:name= ".AddCFoodActivity"
+            android:parentActivityName=".CFoodListActivity">
+        </activity>
+        <activity
+            android:name=".CFoodListActivity"
+            android:label="@string/title_activity_cfood_list"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
             android:name= ".AddFoodActivity"
             android:parentActivityName=".FoodListActivity">
         </activity>
@@ -35,13 +48,22 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
+            android:name=".AddFoodPlan">
+        </activity>
+        <activity
+            android:name= ".FoodPlanActivity"
+            android:label= "FoodPlan"
+            android:theme= "@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
             android:name=".DetailActivity"
             android:parentActivityName=".Calendar_Activity">
             <meta-data
                 android:name="android.detail.PARENT_ACTIVITY"
                 android:value=".Calendar_Activity" />
         </activity>
-        <activity android:name=".SettingsActivity"></activity>
+        <activity
+            android:name=".SettingsActivity" >
+        </activity>
     </application>
-
 </manifest>

@@ -7,16 +7,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CalendarView;
 
 import com.umn.appdev.fitu.Utils.BottomNavigationViewHelper;
-
-import java.util.Calendar;
 
 public class Calendar_Activity extends AppCompatActivity {
 
@@ -35,7 +32,7 @@ public class Calendar_Activity extends AppCompatActivity {
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                Intent intent = new Intent(Calendar_Activity.this,FoodListActivity.class);
+                Intent intent = new Intent(Calendar_Activity.this, CFoodListActivity.class);
                 intent.putExtra("date", dayOfMonth + "/" + month + "/" + year);
                 startActivity(intent);
             }

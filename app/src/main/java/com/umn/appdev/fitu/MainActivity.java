@@ -245,7 +245,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         @Override
         protected Void doInBackground(Void... voids) {
             CalendarEntry entry = new CalendarEntry(foodname,nutrients[0],nutrients[1],nutrients[2],
-                    ++AddFoodActivity.count, Utils.getCurrentDate());
+                    ++AddCFoodActivity.count, Utils.getCurrentDate());
             mDataBase.CalendarDao().insertFood(entry);
             return null;
         }

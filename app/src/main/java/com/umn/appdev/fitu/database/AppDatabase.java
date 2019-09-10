@@ -11,7 +11,7 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {CalendarEntry.class, FoodPlan.class}, version = 1, exportSchema = false)
+@Database(entities = {FoodEntry.class, CalendarEntry.class, FoodPlan.class}, version = 1, exportSchema = false)
 @TypeConverters({DateConverter.class, Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -41,6 +41,8 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract CalendarDao CalendarDao();
     public abstract PlanDao planDao();
+    public abstract FoodDao foodDao();
+
     public void clearDb(){
         if(sInstance != null){
             new PopulateDbAsync(sInstance).execute();
@@ -49,9 +51,11 @@ public abstract class AppDatabase extends RoomDatabase {
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void>{
         private final CalendarDao calendarDao;
         private final PlanDao planDao;
+        private final FoodDao foodDao;
         public PopulateDbAsync(AppDatabase instance){
             calendarDao = instance.CalendarDao();
             planDao = instance.planDao();
+            foodDao = instance.foodDao();
         }
         @Override
         protected Void doInBackground(Void... voids){

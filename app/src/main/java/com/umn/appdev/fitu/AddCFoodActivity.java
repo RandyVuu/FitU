@@ -8,11 +8,11 @@ import android.widget.EditText;
 
 import com.umn.appdev.fitu.Utils.Utils;
 import com.umn.appdev.fitu.database.AppDatabase;
-import com.umn.appdev.fitu.database.FoodEntry;
+import com.umn.appdev.fitu.database.CalendarEntry;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AddFoodActivity extends AppCompatActivity {
+public class AddCFoodActivity extends AppCompatActivity {
     static int count = 0;
     String name;
     double[] nutrients = new double[3];
@@ -21,7 +21,7 @@ public class AddFoodActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_food);
+        setContentView(R.layout.activity_cal_add_food);
         id = new int[]{R.id.protein_input, R.id.carbs_input , R.id.fat_input};
         mDataBase = AppDatabase.getInstance(getApplicationContext());
     }
@@ -41,9 +41,9 @@ public class AddFoodActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            FoodEntry entry = new FoodEntry(name,nutrients[0],nutrients[1],nutrients[2],
+            CalendarEntry entry = new CalendarEntry(name,nutrients[0],nutrients[1],nutrients[2],
                     ++count, Utils.getCurrentDate());
-            mDataBase.foodDao().insertFood(entry);
+            mDataBase.CalendarDao().insertFood(entry);
             return null;
         }
 

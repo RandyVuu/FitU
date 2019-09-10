@@ -9,7 +9,7 @@ import android.view.View;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.umn.appdev.fitu.Utils.Utils;
 import com.umn.appdev.fitu.database.AppDatabase;
-import com.umn.appdev.fitu.database.FoodEntry;
+import com.umn.appdev.fitu.database.CalendarEntry;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,21 +20,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class FoodListActivity extends AppCompatActivity implements FoodAdapter.ListemItemClickListener{
-    private static final String TAG = "FoodActivity";
+public class CFoodListActivity extends AppCompatActivity implements CFoodAdapter.ListemItemClickListener{
+	private static final String TAG = "CFoodActivity";
     private static final int ACTIVITY_NUM = 2;
-    private Context mContext = FoodListActivity.this;
+    private Context mContext = CFoodListActivity.this;
     private Date date;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private AppDatabase mDataBase;
-    private FoodEntry clickedCalendarEntry;
-    private List<FoodEntry> mDataset;
+    private CalendarEntry clickedCalendarEntry;
+    private List<CalendarEntry> mDataset;
 
     @Override
     public void onListItemClick(int clickedItemIndex) {
-        Intent intent = new Intent(this, AddFoodActivity.class);
+        Intent intent = new Intent(this, AddCFoodActivity.class);
         intent.putExtra("foodentry",mDataset.get(clickedItemIndex));
         startActivity(intent);
     }
@@ -44,14 +44,14 @@ public class FoodListActivity extends AppCompatActivity implements FoodAdapter.L
         @Override
         protected Void doInBackground(Void... voids) {
 
-            mDataset = mDataBase.foodDao().loadAllFoods(date);
+            mDataset = mDataBase.CalendarDao().loadAllFoods(date);
             return null;
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            mAdapter = new FoodAdapter(mDataset, FoodListActivity.this);
+            mAdapter = new CFoodAdapter(mDataset, CFoodListActivity.this);
             recyclerView.setAdapter(mAdapter);
         }
     }
@@ -59,7 +59,7 @@ public class FoodListActivity extends AppCompatActivity implements FoodAdapter.L
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_food_list);
+        setContentView(R.layout.activity_cal_food_list);
         Intent intent = getIntent();
         if (intent.hasExtra("date")) {
             String sdate = intent.getStringExtra("date");
@@ -70,7 +70,7 @@ public class FoodListActivity extends AppCompatActivity implements FoodAdapter.L
             }
         }
         else {
-
+            
             date = Utils.getCurrentDate();
         }
         mDataBase = AppDatabase.getInstance(getApplicationContext());
@@ -83,7 +83,7 @@ public class FoodListActivity extends AppCompatActivity implements FoodAdapter.L
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(FoodListActivity.this, AddFoodActivity.class);
+                Intent intent = new Intent(CFoodListActivity.this, AddCFoodActivity.class);
                 startActivity(intent);
             }
         });
